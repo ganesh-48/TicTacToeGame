@@ -72,6 +72,7 @@ public class TicTacToe {
 		int winner = 0;
 		int index = 1;
 		Scanner sc = new Scanner(System.in);
+		{
 		showBoard();
 		System.out.println(" ");
 		if (turn == 0) {
@@ -79,24 +80,22 @@ public class TicTacToe {
 			index = chooseDesiredLoaction();
 			if (!(index == -1))
 				board[index] = player;
-			turn = 1;
+				System.out.println("Your move done");
+				turn = 1;
 		}
 		 else {
 			 System.out.println("Compuer turn");
-				int done = 0;
-				while (done != 1) {
-					chooseDesiredLoaction();
+				index = chooseDesiredLoaction();
 					if (!(index == -1)) {
-						 System.out.println("Compuer turn over");
 						board[index] = computer;
-						done = 1;
+						System.out.println("Compuer turn over");
 						turn = 0;
-						break;
-					} else
-						continue;
+					}
 				}
-
-			}
 		}
 	}
+}
+			
+		
+	
 
