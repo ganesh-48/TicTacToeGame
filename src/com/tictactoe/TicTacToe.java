@@ -41,9 +41,25 @@ public class TicTacToe {
 			computer = 'X';
 
 	}
+	
+	
+	public static int chooseDesiredLoaction() {
+		// showBoard();
+		Scanner sc = new Scanner(System.in);
+		int index;
+		System.out.println("enter your input ");
+		index = sc.nextInt();
+		if (board[index] == '$') {
+			System.out.println("your valid  move and its done");
+			return index;
+		} else
+			System.out.println("please choose a empty location");
+		return -1;
+	}
+
 
 	public static void showBoard() {
-		/* printing the board */
+		// printing a board
 		for (int i = 1; i < board.length; i++) {
 			System.out.print(board[i] + " ");
 			if (i % 3 == 0)
@@ -56,29 +72,22 @@ public class TicTacToe {
 		int winner = 0;
 		int index = 1;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("choose from X and O ");
-		String x = sc.next();
-		char player = x.charAt(0);
-		char computer;
-		if (player != 'X' && player != 'O') {
+		showBoard();
+		System.out.println(" ");
+		if (turn == 0) {
 			System.out.println(" enter symbol");
-		}
-		if (player == 'X')
-			computer = 'O';
-		else
-			computer = 'X';
-		{
-			if (turn == 0) {
-				System.out.println("enter where you want to enter symbol ");
-				index = sc.nextInt();
+			index = chooseDesiredLoaction();
+			if (!(index == -1))
 				board[index] = player;
-				turn = 1;
-			} else {
+			turn = 1;
+		}
+		 else {
+			 System.out.println("Compuer turn");
 				int done = 0;
 				while (done != 1) {
-					Random rand = new Random();
-					index = rand.nextInt(9) + 1;
-					if (index == '&') {
+					chooseDesiredLoaction();
+					if (!(index == -1)) {
+						 System.out.println("Compuer turn over");
 						board[index] = computer;
 						done = 1;
 						turn = 0;
@@ -90,4 +99,4 @@ public class TicTacToe {
 			}
 		}
 	}
-}
+
