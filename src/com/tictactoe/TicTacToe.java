@@ -43,6 +43,22 @@ public class TicTacToe {
 	}
 	
 	
+	public static int whoWillPlayFirst() {
+		Random rand = new Random();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("choose 1 for head and 2 for tails");
+		int userChoice = sc.nextInt();
+		int turn = rand.nextInt(2) + 1;
+		System.out.println("turn = " + turn);
+		if (turn == userChoice) {
+			System.out.println("player will go first");
+			return 0;
+		}
+		return 1;
+
+	}
+
+
 	public static int chooseDesiredLoaction() {
 		// showBoard();
 		Scanner sc = new Scanner(System.in);
@@ -56,7 +72,6 @@ public class TicTacToe {
 			System.out.println("please choose a empty location");
 		return -1;
 	}
-
 
 	public static void showBoard() {
 		// printing a board
@@ -73,29 +88,24 @@ public class TicTacToe {
 		int index = 1;
 		Scanner sc = new Scanner(System.in);
 		{
-		showBoard();
-		System.out.println(" ");
-		if (turn == 0) {
-			System.out.println(" enter symbol");
-			index = chooseDesiredLoaction();
-			if (!(index == -1))
-				board[index] = player;
+			showBoard();
+			System.out.println(" ");
+			if (turn == 0) {
+				System.out.println(" enter symbol");
+				index = chooseDesiredLoaction();
+				if (!(index == -1))
+					board[index] = player;
 				System.out.println("Your move done");
 				turn = 1;
-		}
-		 else {
-			 System.out.println("Compuer turn");
+			} else {
+				System.out.println("Compuer turn");
 				index = chooseDesiredLoaction();
-					if (!(index == -1)) {
-						board[index] = computer;
-						System.out.println("Compuer turn over");
-						turn = 0;
-					}
+				if (!(index == -1)) {
+					board[index] = computer;
+					System.out.println("Compuer turn over");
+					turn = 0;
 				}
+			}
 		}
 	}
 }
-			
-		
-	
-
